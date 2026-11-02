@@ -1,199 +1,168 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AdVanta Media Dashboard</title>
+<title>AdVanta Media</title>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--tx:#14182b;--mu:#667;--ac:#4f46e5;--ln:#e2e4ee;--ok:#12805c;--wa:#b45309;--er:#c0262d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1220;--card:#1a1e33;--tx:#eceefa;--mu:#9aa0c0;--ac:#8b86ff;--ln:#2b3050;--ok:#3ecf9b;--wa:#f2b24b;--er:#ff7b80;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0f1220;--card:#1a1e33;--tx:#eceefa;--mu:#9aa0c0;--ac:#8b86ff;--ln:#2b3050;--ok:#3ecf9b;--wa:#f2b24b;--er:#ff7b80;color-scheme:dark}
+:root{--bg:#070a1a;--card:#0f1431;--card2:#141a3d;--tx:#f1f2fb;--mu:#9aa0c6;--ac:#6d4aff;--ac2:#9b7bff;--ln:#2a3070;--ok:#3ecf9b;--wa:#f2b24b;--er:#ff7b80;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:78px}
-header{padding:14px 16px 6px;display:flex;justify-content:space-between;align-items:center}
-h1{font-size:20px;margin:0}h1 span{color:var(--ac)}h2{font-size:17px;margin:18px 0 8px}h3{font-size:15px;margin:14px 0 6px}
-#st{font-size:12px;color:var(--mu)}
+body{margin:0;background:radial-gradient(120% 60% at 50% 0,#151a4a 0,var(--bg) 60%) fixed;color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+header{padding:14px 16px 4px;display:flex;align-items:center;gap:10px;max-width:640px;margin:auto}
+.logo{font-weight:800;font-size:21px;line-height:1}.logo small{display:block;color:var(--ac2);font-size:21px}
+.tag{margin-left:auto;font-size:12px;color:var(--mu);text-align:right}#st{display:block;margin-top:2px}
 main{padding:0 14px 20px;max-width:640px;margin:auto}
-.c{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px;margin:10px 0}
-.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1}
-.g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.k{font-size:24px;font-weight:700}.mu{color:var(--mu);font-size:13px}
+h2{font-size:17px;margin:20px 0 8px}
+.c{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--ln);border-radius:18px;padding:14px;margin:10px 0}
+.hero{display:flex;gap:12px;align-items:center}.hero .ic{width:54px;height:54px;border-radius:14px;background:#1e1b6b;display:grid;place-items:center;font-size:26px;flex:none}
+.hero h1{font-size:22px;margin:0}.mu{color:var(--mu);font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1}.g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.k{font-size:24px;font-weight:700}
 button,select,input,textarea{font:inherit;color:var(--tx)}
-input,select,textarea{width:100%;padding:11px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);margin:3px 0 8px}
-textarea{min-height:110px}
-label{font-size:13px;color:var(--mu)}
-button{border:0;background:var(--ac);color:#fff;padding:12px 14px;border-radius:10px;font-weight:600;min-height:44px}
-button.s{background:transparent;color:var(--ac);border:1px solid var(--ac)}
-button.d{background:var(--er)}button:disabled{opacity:.45}
-.b{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--ln)}
+input,select,textarea{width:100%;padding:13px;border:1px solid var(--ln);border-radius:14px;background:#0a0e26;margin:4px 0 10px}
+textarea{min-height:110px}label{font-size:14px;font-weight:600}
+button{border:0;background:var(--ac);color:#fff;padding:12px 14px;border-radius:12px;font-weight:600;min-height:44px}
+button.s{background:transparent;color:var(--ac2);border:1px solid var(--ac)}button.d{background:var(--er)}button:disabled{opacity:.45}
+.big{width:100%;border-radius:99px;min-height:54px;font-size:17px;background:linear-gradient(90deg,#5b3dff,#8a5bff);box-shadow:0 6px 24px #5b3dff55}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.chip{background:transparent;border:1.5px solid var(--ln);color:var(--tx);border-radius:99px;padding:9px 14px;min-height:40px;font-weight:500}
+.chip.on{background:var(--ac);border-color:var(--ac)}.chip.on::after{content:" ✓"}
+.b{display:inline-block;font-size:12px;padding:2px 9px;border-radius:99px;background:var(--ln)}
 .ok{color:var(--ok)}.wa{color:var(--wa)}.er{color:var(--er)}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;background:none;color:var(--mu);border-radius:0;font-size:13px;padding:10px 2px}
-nav button.on{color:var(--ac)}
-.item{cursor:pointer}
-.warn{font-size:13px;background:var(--bg);border:1px dashed var(--wa);border-radius:10px;padding:8px;margin:8px 0}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:#080b20ee;border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom,0px);backdrop-filter:blur(8px)}
+nav button{flex:1;background:none;color:var(--mu);border-radius:0;font-size:12px;padding:8px 2px;line-height:1.3}
+nav button span{display:block;font-size:20px}nav button.on{color:var(--ac2);box-shadow:inset 0 -3px var(--ac2)}
+.item{cursor:pointer}.warn{font-size:13px;border:1px dashed var(--wa);border-radius:12px;padding:9px;margin:8px 0}
+.safe{text-align:center;color:var(--mu);font-size:13px;margin-top:8px}
 </style></head><body>
-<header><h1>AdVanta <span>Media</span></h1><div id="st">Loading…</div></header>
-<main id="m"></main>
-<nav id="nav"></nav>
+<header><div class="logo">AdVanta<small>Media</small></div><div class="tag">Grow. Advertise. Succeed.<span id="st">Loading…</span></div></header>
+<main id="m"></main><nav id="nv"></nav>
 <script>
 const STAGES=["New","Contacted","Replied","Proposal Sent","Won","Lost"];
-const INDS=["Restaurants, cafés & hotels","Clothing & fashion","Real estate","Beauty, barbershops & spas","E-commerce","Gyms & fitness","Auto dealerships & rentals","Home services","Dentists & local services","Events & entertainment","Other SMB"];
+const CATS=["Restaurants","Hotels","Real Estate","Fashion","E-commerce","Beauty & Wellness","Fitness","Automotive","Home Services","Events","Other"];
 const DEF={biz:"AdVanta Media",name:"[Your Name]",addr:"[Your Business Address, City, State ZIP]",optout:"If you’d rather not hear from me, just reply “no thanks” and I won’t contact you again."};
-let S={p:[],sales:[],set:{...DEF}},view="home",cur=null,docRef=null,sample=null,mode="device",tmr=null,flt={q:"",i:"",s:""},armed=null,msg="";
+let S={p:[],sales:[],set:{...DEF},req:null},view="disc",cur=null,docRef=null,sample=null,tmr=null,flt="",armed=null,dirty=false,last="";
 const $=s=>document.querySelector(s);
 const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const today=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
-const addDays=(n)=>{const d=new Date();d.setDate(d.getDate()+n);return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+const ld=d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const today=()=>ld(new Date());const addDays=n=>{const d=new Date();d.setDate(d.getDate()+n);return ld(d)};
 const uid=()=>Math.random().toString(36).slice(2,10);
 const money=n=>"$"+(Number(n)||0).toLocaleString("en-US",{maximumFractionDigits:0});
-const P=id=>S.p.find(x=>x.id===id);
-function status(t){$("#st").textContent=t}
+const P=id=>S.p.find(x=>x.id===id);const status=t=>$("#st").textContent=t;
+function norm(o){return Object.assign({p:[],sales:[],set:{...DEF},req:null},o,{set:{...DEF,...(o&&o.set||{})}})}
 function save(){
-  try{localStorage.setItem("advanta_v1",JSON.stringify(S))}catch(e){}
+  dirty=true;try{localStorage.setItem("advanta_v1",JSON.stringify(S))}catch(e){}
   clearTimeout(tmr);status("Saving…");
-  tmr=setTimeout(async()=>{
-    if(docRef){try{await docRef.set({json:JSON.stringify(S)});status("Saved ✓ private cloud");return}catch(e){mode="device"}}
-    status("Saved on this phone only")
-  },400)
-}
+  tmr=setTimeout(async()=>{const j=JSON.stringify(S);
+    if(docRef){try{await docRef.set({json:j});last=j;dirty=false;status("Saved ✓ private");return}catch(e){}}
+    status("Saved on this phone only")},400)}
+function adopt(j){if(!j||j===last)return;let r;try{r=norm(JSON.parse(j))}catch(e){return}last=j;
+  if(dirty){const ids=new Set(S.p.map(x=>x.id));r.p.forEach(x=>{if(!ids.has(x.id))S.p.push(x)});if(r.req&&(!S.req||r.req.id!==S.req.id||r.req.status!=="waiting"))S.req=r.req}else S=r;
+  if(view!=="det"){render();status("Updated ✓")}}
+async function pull(){if(!docRef)return status("Cloud not connected");try{const s=await docRef.get();if(s&&s.exists)adopt(s.data().json);status("Up to date ✓")}catch(e){status("Couldn’t refresh")}}
 async function init(){
-  try{const l=localStorage.getItem("advanta_v1");if(l)S=Object.assign(S,JSON.parse(l))}catch(e){}
+  try{const l=localStorage.getItem("advanta_v1");if(l)S=norm(JSON.parse(l))}catch(e){}
   render();
-  try{
-    if(window.claude&&claude.use){
-      const u=await claude.use("user"),db=await claude.use("db"),id=u&&await u.id();
-      sample=await claude.use("sample");
-      if(db&&id){
-        docRef=db.collection("data/users/"+id).doc("advanta");
-        const snap=await Promise.race([docRef.get(),new Promise((_,r)=>setTimeout(()=>r(0),10000))]);
-        if(snap&&snap.exists&&snap.data().json){S=Object.assign({p:[],sales:[],set:{...DEF}},JSON.parse(snap.data().json));mode="cloud"}
-        else if(S.p.length||S.sales.length){await docRef.set({json:JSON.stringify(S)});mode="cloud"}
-        else mode="cloud";
-        status(mode==="cloud"?"Private cloud ✓":"This phone only");render();return
-      }
-    }
-  }catch(e){}
-  status("Saved on this phone only");render()
-}
-function nav(){
-  $("#nav").innerHTML=[["home","Home"],["pros","Prospects"],["sales","Sales"],["set","Settings"]].map(([k,l])=>`<button data-go="${k}" class="${view===k||(view==="det"&&k==="pros")?"on":""}">${l}</button>`).join("")
-}
-function render(){nav();({home:rHome,pros:rPros,det:rDet,sales:rSales,set:rSet})[view]();window.scrollTo(0,0)}
-function due(){const t=today();return S.p.filter(x=>x.fu&&x.stage!=="Lost"&&!x.dnc).sort((a,b)=>a.fu<b.fu?-1:1).map(x=>({x,k:x.fu<t?"o":x.fu===t?"t":"u"}))}
-function mrr(){return S.p.filter(x=>x.stage==="Won").reduce((a,x)=>a+(Number(x.fee)||0),0)}
-function rHome(){
-  const d=due(),now=d.filter(z=>z.k!=="u"),up=d.filter(z=>z.k==="u").slice(0,5),mo=today().slice(0,7);
-  const mt=S.sales.filter(s=>s.d.startsWith(mo)).reduce((a,s)=>a+s.a,0);
-  const row=z=>`<div class="c item" data-open="${z.x.id}"><b>${esc(z.x.name)}</b> <span class="b ${z.k==="o"?"er":""}">${z.k==="o"?"Overdue":z.k==="t"?"Today":"Upcoming"} · ${esc(z.x.fu)}</span><div class="mu">${esc(z.x.stage)}</div></div>`;
-  $("#m").innerHTML=`<div class="g"><div class="c"><div class="k">${S.p.filter(x=>!["Won","Lost"].includes(x.stage)).length}</div><div class="mu">Open prospects</div></div>
-  <div class="c"><div class="k">${S.p.filter(x=>x.stage==="Won").length}</div><div class="mu">Clients</div></div>
-  <div class="c"><div class="k">${money(mrr())}</div><div class="mu">Monthly recurring</div></div>
-  <div class="c"><div class="k">${money(mt)}</div><div class="mu">Sales this month</div></div></div>
-  <button style="width:100%" data-new="1">+ Add prospect</button>
-  <h2>Follow-ups due (${now.length})</h2>${now.map(row).join("")||'<div class="c mu">Nothing due. Set follow-up dates inside a prospect.</div>'}
-  ${up.length?"<h2>Coming up</h2>"+up.map(row).join(""):""}
-  <h2>Pipeline</h2><div class="c">${STAGES.map(s=>`<div class="row" style="justify-content:space-between"><span>${s}</span><b style="flex:0">${S.p.filter(x=>x.stage===s).length}</b></div>`).join("")}</div>`
-}
+  try{if(window.claude&&claude.use){
+    const u=await claude.use("user"),db=await claude.use("db"),id=u&&await u.id();sample=await claude.use("sample");
+    if(db&&id){docRef=db.collection("data/users/"+id).doc("advanta");
+      const snap=await Promise.race([docRef.get(),new Promise((_,r)=>setTimeout(()=>r(0),10000))]);
+      if(snap&&snap.exists&&snap.data().json){last=snap.data().json;S=norm(JSON.parse(last))}else if(S.p.length||S.sales.length||S.req){await docRef.set({json:JSON.stringify(S)})}
+      status("Private cloud ✓");try{docRef.onSnapshot(s=>{if(s&&s.exists&&!s.metadata.hasPendingWrites)adopt(s.data().json)})}catch(e){}
+      document.addEventListener("visibilitychange",()=>{if(!document.hidden)pull()});render();return}
+  }}catch(e){}
+  status("This phone only");render()}
+function nav(){$("#nv").innerHTML=[["disc","◎","Discover"],["pros","👥","Prospects"],["camp","✉️","Campaigns"],["set","⚙️","Settings"]].map(([k,i,l])=>`<button data-go="${k}" class="${view===k||(view==="det"&&k==="pros")?"on":""}"><span>${i}</span>${l}</button>`).join("")}
+function render(){nav();({disc:rDisc,pros:rPros,det:rDet,camp:rCamp,set:rSet})[view]();}
+const R=(k)=>S.req&&S.req[k];
+function found(){return S.req&&S.req.id?S.p.filter(x=>x.reqId===S.req.id):[]}
+function rDisc(){
+  const q=S.req||{email:"",country:"United States",cats:["Restaurants","Real Estate"],service:"Facebook & Instagram Ads",n:10,style:"Professional and personalised"},sel=new Set(q.cats||[]);
+  const waiting=S.req&&S.req.status==="waiting",res=found();
+  const o=(a,v)=>a.map(x=>`<option ${x==v?"selected":""}>${esc(x)}</option>`).join("");
+  $("#m").innerHTML=`<div class="c hero"><div class="ic">📊</div><div><h1>Find Business Clients</h1><div class="mu">Set your search once. AdVanta finds real businesses and drafts outreach for your approval.</div></div></div>
+  <label>Business email</label><input id="fe" type="email" placeholder="you@advantamedia.com" value="${esc(q.email)}">
+  <label>Target country</label><select id="fc">${o(["United States"],q.country)}</select>
+  <label>Business categories (select multiple)</label><div class="chips">${CATS.map(c=>`<button class="chip ${sel.has(c)?"on":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</div>
+  <label>What service are you offering?</label><select id="fv">${o(["Facebook & Instagram Ads","Facebook Ads only","Instagram Ads only"],q.service)}</select>
+  <label>Businesses to research</label><select id="fn">${o([5,10,15,20],q.n)}</select>
+  <label>Email style</label><select id="fy">${o(["Professional and personalised","Friendly and casual","Short and direct"],q.style)}</select>
+  <div class="warn" id="fw" hidden></div>
+  <button class="big" data-find="1">🔍 Find Businesses & Draft Emails</button><div class="safe">🛡 Nothing is sent without your approval.</div>
+  ${waiting?`<div class="c"><b class="wa">⏳ Search saved, waiting for research</b><p class="mu">Live web research runs inside your Claude chat, because this page can’t browse the web or hold search keys safely. Do this:</p><ol class="mu"><li>Go back to your Claude chat.</li><li>Send the message below.</li><li>Return here and tap Refresh.</li></ol><textarea id="cm" readonly style="min-height:70px">Run my AdVanta search</textarea><div class="row"><button data-copym="1">Copy message</button><button class="s" data-pull="1">Refresh</button></div></div>`:""}
+  ${S.req&&S.req.status==="done"?`<div class="c"><b class="ok">✓ Research finished</b> <span class="mu">${esc(S.req.note||"")}</span></div>`:""}
+  <h2>Latest results ${res.length?`(${res.length})`:""}</h2>${res.map(card).join("")||'<div class="c mu">No results yet. Tap the button above to start.</div>'}`}
+function card(x){return `<div class="c item" data-open="${x.id}"><b>${esc(x.name)}</b> <span class="b">${esc(x.stage)}</span>${x.ok?' <span class="b ok">Approved</span>':""}<div class="mu">${esc(x.ind)} · ${esc([x.city,x.state].filter(Boolean).join(", "))}</div><div class="mu">${x.email?"✉ "+esc(x.email):"No public email found"}</div></div>`}
 function rPros(){
-  $("#m").innerHTML=`<h2>Prospects & clients</h2><button style="width:100%" data-new="1">+ Add prospect</button>
-  <input id="q" placeholder="Search name or city" value="${esc(flt.q)}" style="margin-top:10px">
-  <div class="row"><select id="fi"><option value="">All industries</option>${INDS.map(i=>`<option ${flt.i===i?"selected":""}>${esc(i)}</option>`).join("")}</select>
-  <select id="fs"><option value="">All stages</option>${STAGES.map(i=>`<option ${flt.s===i?"selected":""}>${i}</option>`).join("")}</select></div><div id="lst"></div>`;
-  const draw=()=>{const q=flt.q.toLowerCase();const l=S.p.filter(x=>(!q||(x.name+" "+x.city).toLowerCase().includes(q))&&(!flt.i||x.ind===flt.i)&&(!flt.s||x.stage===flt.s));
-    $("#lst").innerHTML=l.map(x=>`<div class="c item" data-open="${x.id}"><b>${esc(x.name)}</b> <span class="b">${esc(x.stage)}</span>${x.dnc?' <span class="b er">Do not contact</span>':""}<div class="mu">${esc(x.ind)} · ${esc([x.city,x.state].filter(Boolean).join(", "))}</div></div>`).join("")||'<div class="c mu">No prospects yet. Tap “Add prospect”.</div>'};
-  draw();
-  $("#q").oninput=e=>{flt.q=e.target.value;draw()};$("#fi").onchange=e=>{flt.i=e.target.value;draw()};$("#fs").onchange=e=>{flt.s=e.target.value;draw()}
-}
+  $("#m").innerHTML=`<h2>Prospects & clients</h2><input id="q" placeholder="Search name or city" value="${esc(flt)}"><div id="lst"></div><button class="s" style="width:100%" data-new="1">+ Add one manually</button>`;
+  const draw=()=>{const q=flt.toLowerCase();$("#lst").innerHTML=S.p.filter(x=>!q||(x.name+" "+x.city).toLowerCase().includes(q)).map(card).join("")||'<div class="c mu">None yet. Use Discover to find businesses.</div>'};draw();$("#q").oninput=e=>{flt=e.target.value;draw()}}
 function full(p){const s=S.set;return (p.body||"")+"\n\n"+s.name+"\n"+s.biz+"\n"+s.addr+"\n\n"+s.optout}
-function blockers(p){const s=S.set,b=[];
-  if(!p.email)b.push("Add the prospect’s email address.");if(p.dnc)b.push("Prospect is marked Do not contact.");
-  if(!p.subj||!p.body)b.push("Subject and email body are needed.");
+function blockers(p){const s=S.set,b=[];if(!p.email)b.push("No public email found. Check the website’s contact form or add one.");
+  if(p.dnc)b.push("Marked Do not contact.");if(!p.subj||!p.body)b.push("Subject and email body are needed.");
   if(/\[.*\]/.test(s.addr))b.push("Replace the placeholder business address in Settings (required by CAN-SPAM).");
-  if(/\[.*\]/.test(s.name))b.push("Replace the placeholder name in Settings.");
-  if(!p.chk)b.push("Tick the compliance confirmation.");return b}
+  if(/\[.*\]/.test(s.name))b.push("Replace the placeholder name in Settings.");if(!p.chk)b.push("Tick the confirmation.");return b}
 function appr(p){const b=blockers(p);
-  $("#ap").innerHTML=p.ok?`<div class="ok"><b>✓ Approved</b> (${esc(p.okAt||"")})</div><div class="row" style="margin-top:8px"><button data-copy="1">Copy email</button><button data-gmail="1">Open in Gmail</button><button class="s" data-unapp="1">Revoke approval</button></div><div class="mu" style="margin-top:6px">Gmail opens a pre-filled draft. You press Send yourself. After sending, set the stage to Contacted.</div>`
-  :`<label><input type="checkbox" id="chk" style="width:auto;margin-right:8px" ${p.chk?"checked":""}>I confirm the subject is honest and this email is accurate. My address and an opt-out line are added automatically.</label>${b.length?`<div class="warn">${b.map(x=>"• "+esc(x)).join("<br>")}</div>`:""}<button data-app="1" ${b.length?"disabled":""} style="width:100%">Approve draft</button>`;
+  $("#ap").innerHTML=p.ok?`<div class="ok"><b>✓ Approved</b> ${esc(p.okAt||"")}</div><div class="row" style="margin-top:8px"><button data-copy="1">Copy email</button><button data-gmail="1">Open in Gmail</button><button class="s" data-unapp="1">Revoke</button></div><div class="mu" style="margin-top:6px">Gmail opens a pre-filled draft. You press Send. Then set stage to Contacted and add a follow-up date.</div>`
+  :`<label style="font-weight:400"><input type="checkbox" id="chk" style="width:auto;margin-right:8px" ${p.chk?"checked":""}>I checked the facts, and the subject is honest. My address and opt-out line are added automatically.</label>${b.length?`<div class="warn">${b.map(x=>"• "+esc(x)).join("<br>")}</div>`:""}<button data-app="1" ${b.length?"disabled":""} style="width:100%">Approve this email</button>`;
   const c=$("#chk");if(c)c.onchange=e=>{p.chk=e.target.checked;save();appr(p)}}
 function rDet(){
   const p=P(cur);if(!p){view="pros";return render()}
   const f=(k,l,t="text")=>`<label>${l}</label><input data-f="${k}" type="${t}" value="${esc(p[k])}">`;
-  $("#m").innerHTML=`<div class="row" style="margin-top:10px"><button class="s" data-go="pros">← Back</button></div><h2>${esc(p.name)||"New prospect"}</h2>
-  <div class="c">${f("name","Business name")}<label>Industry</label><select data-f="ind">${INDS.map(i=>`<option ${p.ind===i?"selected":""}>${esc(i)}</option>`).join("")}</select>
-  <div class="row"><div>${f("city","City")}</div><div>${f("state","State")}</div></div>${f("web","Website")}${f("contact","Contact person")}${f("email","Email","email")}
+  $("#m").innerHTML=`<div style="margin-top:12px"><button class="s" data-go="${p.reqId?"disc":"pros"}">← Back</button></div><h2>${esc(p.name)||"New prospect"}</h2>
+  ${p.why||p.src?`<div class="c"><b>Research</b><p class="mu" style="white-space:pre-wrap">${esc(p.why||"")}</p>${p.src?`<div class="mu">Source: ${esc(p.src)}</div>`:""}${p.emailSrc?`<div class="mu">Email found at: ${esc(p.emailSrc)}</div>`:""}<div class="mu">Verify before sending. Research can contain mistakes.</div></div>`:""}
+  <div class="c">${f("name","Business name")}${f("ind","Category")}<div class="row"><div>${f("city","City")}</div><div>${f("state","State")}</div></div>${f("web","Website")}${f("contact","Contact person")}${f("email","Email","email")}
   <label>Stage</label><select data-f="stage">${STAGES.map(i=>`<option ${p.stage===i?"selected":""}>${i}</option>`).join("")}</select>
   <div id="fee" ${p.stage==="Won"?"":"hidden"}>${f("fee","Monthly fee ($)","number")}${f("since","Client since","date")}</div>
-  <label>Notes (what you found out about them)</label><textarea data-f="notes">${esc(p.notes)}</textarea>
-  <label>Advertising opportunity (your ideas)</label><textarea data-f="opp">${esc(p.opp)}</textarea>
-  <label><input type="checkbox" data-f="dnc" style="width:auto;margin-right:8px" ${p.dnc?"checked":""}>Do not contact</label></div>
-  <h2>Follow-up reminder</h2><div class="c"><input type="date" data-f="fu" value="${esc(p.fu)}"><div class="row"><button class="s" data-snz="3">+3 days</button><button class="s" data-snz="7">+7 days</button><button class="s" data-snz="14">+14 days</button><button class="s" data-snz="0">Clear</button></div></div>
-  <h2>Proposal & email</h2><div class="c">
-  <button data-ai="1" style="width:100%" id="aib">${sample?"✨ Draft with AI":"AI drafting not available"}</button>
-  <div class="mu" id="aim">AI uses only the details above. It can’t browse the web, so add notes first. Always review before approving.</div>
-  <label style="margin-top:10px">Proposal</label><textarea data-d="prop" style="min-height:200px">${esc(p.prop)}</textarea>
-  <label>Email subject</label><input data-d="subj" value="${esc(p.subj)}">
-  <label>Email body</label><textarea data-d="body" style="min-height:180px">${esc(p.body)}</textarea>
-  <div class="mu">Added automatically when sent: your name, business, address and opt-out line.</div><div id="ap" style="margin-top:10px"></div></div>
-  <h2>Delete</h2><button class="${armed===p.id?"d":"s"}" data-del="1" style="width:100%">${armed===p.id?"Tap again to delete for good":"Delete prospect"}</button>`;
-  appr(p)
-}
-function rSales(){
-  const cl=S.p.filter(x=>x.stage==="Won"),mo=today().slice(0,7),tot=S.sales.reduce((a,s)=>a+s.a,0),mt=S.sales.filter(s=>s.d.startsWith(mo)).reduce((a,s)=>a+s.a,0);
-  $("#m").innerHTML=`<h2>Sales</h2><div class="g"><div class="c"><div class="k">${money(mt)}</div><div class="mu">This month</div></div><div class="c"><div class="k">${money(tot)}</div><div class="mu">All time</div></div></div>
-  <div class="c"><b>Log a payment</b><label>Client</label><select id="sc"><option value="">Other / one-off</option>${cl.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join("")}</select>
-  <label>Amount ($)</label><input id="sa" type="number" inputmode="decimal"><label>Date</label><input id="sd" type="date" value="${today()}"><label>Note</label><input id="sn" placeholder="e.g. October ad management fee">
-  <div class="warn" id="se" hidden></div><button id="sb" style="width:100%">Add sale</button></div>
-  <h2>History</h2>${[...S.sales].sort((a,b)=>a.d<b.d?1:-1).map(s=>`<div class="c row" style="align-items:center"><div><b>${money(s.a)}</b> <span class="mu">${esc(s.d)}</span><div class="mu">${esc(s.n||"")} ${s.c&&P(s.c)?"· "+esc(P(s.c).name):""}</div></div><button class="${armed===s.id?"d":"s"}" style="flex:0 0 auto" data-ds="${s.id}">${armed===s.id?"Confirm":"Delete"}</button></div>`).join("")||'<div class="c mu">No sales logged yet.</div>'}`;
-  $("#sb").onclick=()=>{const a=parseFloat($("#sa").value),e=$("#se");if(!(a>0)){e.hidden=false;e.textContent="Enter an amount above 0.";return}
-    S.sales.push({id:uid(),c:$("#sc").value,a,d:$("#sd").value||today(),n:$("#sn").value});save();render()}
-}
-function rSet(){
-  const s=S.set,f=(k,l)=>`<label>${l}</label><input data-s="${k}" value="${esc(s[k])}">`;
-  $("#m").innerHTML=`<h2>Settings</h2><div class="c">${f("name","Your name (signature)")}${f("biz","Business name")}${f("addr","Business mailing address (required in marketing emails)")}<label>Opt-out line</label><textarea data-s="optout" style="min-height:70px">${esc(s.optout)}</textarea></div>
-  <h2>Backup</h2><div class="c"><div class="mu">Your data is private to your account. Back up regularly anyway.</div>
-  <button id="ex" style="width:100%;margin-top:8px">Export backup</button><div id="exm" class="mu"></div>
-  <textarea id="bk" placeholder="Backup text appears here after export. To restore, paste a backup here and tap Import." style="margin-top:8px"></textarea>
-  <button class="s" id="cp" style="width:100%">Copy backup text</button>
-  <label style="margin-top:8px">Or choose a backup file</label><input type="file" id="fl" accept=".json,application/json">
-  <button id="im" class="s" style="width:100%">Import (replaces current data)</button><div id="imm" class="mu"></div></div>
-  <h2>What works / doesn’t yet</h2><div class="c mu">✅ Tracking, follow-ups, sales, drafts, approval, backup.<br>✅ “Open in Gmail” makes a pre-filled draft. You press Send.<br>❌ No automatic discovery of prospects yet. Ask Claude in chat to research businesses, then add them.<br>❌ No automatic sending or reply tracking yet (needs extra Gmail setup).<br>❌ Reminders show in this dashboard only. They don’t send phone notifications.</div>`;
+  <label>Notes</label><textarea data-f="notes">${esc(p.notes)}</textarea><label>Advertising opportunity</label><textarea data-f="opp">${esc(p.opp)}</textarea>
+  <label style="font-weight:400"><input type="checkbox" data-f="dnc" style="width:auto;margin-right:8px" ${p.dnc?"checked":""}>Do not contact</label></div>
+  <h2>Follow-up</h2><div class="c"><input type="date" data-f="fu" value="${esc(p.fu)}"><div class="row"><button class="s" data-snz="3">+3d</button><button class="s" data-snz="7">+7d</button><button class="s" data-snz="14">+14d</button><button class="s" data-snz="0">Clear</button></div></div>
+  <h2>Email draft</h2><div class="c"><button class="s" style="width:100%" data-ai="1" id="aib">${sample?"✨ Redraft with AI":"AI redraft not available"}</button><div class="mu" id="aim">Uses only the details above. Review before approving.</div>
+  <label style="margin-top:10px">Subject</label><input data-d="subj" value="${esc(p.subj)}"><label>Email body</label><textarea data-d="body" style="min-height:190px">${esc(p.body)}</textarea>
+  <label>Proposal (optional)</label><textarea data-d="prop">${esc(p.prop)}</textarea><div class="mu">Added when sent: your name, business, address and opt-out line.</div><div id="ap" style="margin-top:10px"></div></div>
+  <button class="${armed===p.id?"d":"s"}" data-del="1" style="width:100%;margin-top:14px">${armed===p.id?"Tap again to delete":"Delete prospect"}</button>`;appr(p)}
+function rCamp(){
+  const t=today(),d=S.p.filter(x=>x.fu&&x.stage!=="Lost"&&!x.dnc).sort((a,b)=>a.fu<b.fu?-1:1),mo=t.slice(0,7);
+  const mt=S.sales.filter(s=>s.d.startsWith(mo)).reduce((a,s)=>a+s.a,0),mrr=S.p.filter(x=>x.stage==="Won").reduce((a,x)=>a+(Number(x.fee)||0),0),cl=S.p.filter(x=>x.stage==="Won");
+  $("#m").innerHTML=`<h2>Campaign overview</h2><div class="g">${STAGES.map(s=>`<div class="c"><div class="k">${S.p.filter(x=>x.stage===s).length}</div><div class="mu">${s}</div></div>`).join("")}</div>
+  <div class="g"><div class="c"><div class="k">${money(mrr)}</div><div class="mu">Monthly recurring</div></div><div class="c"><div class="k">${money(mt)}</div><div class="mu">Sales this month</div></div></div>
+  <h2>Follow-ups</h2>${d.map(x=>{const k=x.fu<t?"Overdue":x.fu===t?"Today":"Upcoming";return `<div class="c item" data-open="${x.id}"><b>${esc(x.name)}</b> <span class="b ${k==="Overdue"?"er":""}">${k} · ${esc(x.fu)}</span><div class="mu">${esc(x.stage)}</div></div>`}).join("")||'<div class="c mu">No follow-ups set.</div>'}
+  <h2>Log a sale</h2><div class="c"><label>Client</label><select id="sc"><option value="">Other</option>${cl.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join("")}</select><label>Amount ($)</label><input id="sa" type="number" inputmode="decimal"><label>Date</label><input id="sd" type="date" value="${t}"><label>Note</label><input id="sn"><div class="warn" id="se" hidden></div><button id="sb" style="width:100%">Add sale</button></div>
+  ${[...S.sales].sort((a,b)=>a.d<b.d?1:-1).map(s=>`<div class="c row" style="align-items:center"><div><b>${money(s.a)}</b> <span class="mu">${esc(s.d)}</span><div class="mu">${esc(s.n||"")} ${s.c&&P(s.c)?"· "+esc(P(s.c).name):""}</div></div><button class="${armed===s.id?"d":"s"}" style="flex:0 0 auto" data-ds="${s.id}">${armed===s.id?"Confirm":"Delete"}</button></div>`).join("")}`;
+  $("#sb").onclick=()=>{const a=parseFloat($("#sa").value);if(!(a>0)){$("#se").hidden=false;$("#se").textContent="Enter an amount above 0.";return}S.sales.push({id:uid(),c:$("#sc").value,a,d:$("#sd").value||today(),n:$("#sn").value});save();render()}}
+function rSet(){const s=S.set,f=(k,l)=>`<label>${l}</label><input data-s="${k}" value="${esc(s[k])}">`;
+  $("#m").innerHTML=`<h2>Email settings</h2><div class="c">${f("name","Your name (signature)")}${f("biz","Business name")}${f("addr","Business mailing address (required)")}<label>Opt-out line</label><textarea data-s="optout" style="min-height:70px">${esc(s.optout)}</textarea></div>
+  <h2>Backup</h2><div class="c"><button id="ex" style="width:100%">Export backup</button><div id="exm" class="mu"></div><textarea id="bk" placeholder="Backup text appears here. To restore, paste it here and tap Import." style="margin-top:8px"></textarea>
+  <button class="s" id="cp" style="width:100%">Copy backup text</button><label style="margin-top:8px">Or choose a file</label><input type="file" id="fl" accept=".json"><button id="im" class="s" style="width:100%">Import (replaces current data)</button><div id="imm" class="mu"></div></div>
+  <h2>What works</h2><div class="c mu">✅ Search request, results review, edit, approve, Open in Gmail, follow-ups, sales, backup.<br>⚠️ Live research runs in your Claude chat when you ask, not by itself.<br>❌ No automatic sending or reply tracking. Gmail needs extra setup.<br>❌ Public emails aren’t always available. Missing ones are shown as missing.<br>❌ No phone notifications for reminders.</div>`;
   $("#ex").onclick=async()=>{const data=JSON.stringify(S,null,1);$("#bk").value=data;let d=null;try{d=window.claude&&await claude.use("downloads")}catch(e){}
-    if(d){try{await d.save({filename:"advanta-backup-"+today()+".json",data});$("#exm").textContent="Backup file offered for download. The text is also shown above.";return}catch(e){}}
-    $("#exm").textContent="Backup text is shown above. Tap “Copy backup text” and paste it into a note or email to yourself."};
-  $("#cp").onclick=async()=>{const t=$("#bk");if(!t.value)t.value=JSON.stringify(S,null,1);t.select();try{await navigator.clipboard.writeText(t.value);$("#exm").textContent="Copied ✓"}catch(e){document.execCommand&&document.execCommand("copy");$("#exm").textContent="Selected. Long-press and Copy if needed."}};
-  const imp=txt=>{try{const o=JSON.parse(txt);if(!Array.isArray(o.p)||!Array.isArray(o.sales))throw 0;S={p:o.p,sales:o.sales,set:{...DEF,...(o.set||{})}};save();$("#imm").textContent="Imported ✓ "+o.p.length+" prospects.";}catch(e){$("#imm").textContent="That doesn’t look like an AdVanta backup."}};
-  $("#im").onclick=()=>imp($("#bk").value);$("#fl").onchange=e=>{const r=new FileReader();r.onload=()=>imp(r.result);r.readAsText(e.target.files[0])}
-}
-async function ai(p){
-  const b=$("#aib"),m=$("#aim");if(!sample)return;b.disabled=true;b.textContent="Drafting…";
-  const s=S.set,prompt=`You write for ${s.biz}, a US agency that manages Facebook and Instagram ad campaigns for small businesses. Write a short proposal and a first outreach email for this prospect, using ONLY the facts given. Never invent statistics, results, awards or guarantees. Be friendly, specific and honest. Do not claim you saw their ads unless stated.
-Business: ${p.name}\nIndustry: ${p.ind}\nLocation: ${p.city}, ${p.state}\nWebsite: ${p.web}\nContact: ${p.contact}\nNotes: ${p.notes}\nAdvertising opportunity ideas: ${p.opp}
-Return ONLY JSON: {"proposal":"~200 words with sections: Opportunity, What we’ll do, Next step","subject":"honest, under 60 chars","body":"under 120 words, greet by contact name if known, no signature, no address, no opt-out line"}`;
-  try{const r=await sample.json(prompt);p.prop=r.proposal||"";p.subj=r.subject||"";p.body=r.body||"";p.ok=false;p.chk=false;save();render()}
-  catch(e){b.disabled=false;b.textContent="✨ Draft with AI";m.innerHTML='<span class="er">AI draft failed ('+esc(e&&e.code||"error")+'). Try again or write the draft yourself.</span>'}
-}
-document.addEventListener("click",e=>{
-  const t=e.target.closest("button,[data-open]");if(!t)return;const d=t.dataset;
-  if(d.go){view=d.go;armed=null;return render()}
-  if(d.open){cur=d.open;view="det";return render()}
-  if(d.new){const p={id:uid(),name:"",ind:INDS[0],city:"",state:"",web:"",contact:"",email:"",stage:"New",notes:"",opp:"",fu:"",prop:"",subj:"",body:"",ok:false,chk:false,dnc:false,fee:"",since:""};S.p.push(p);cur=p.id;view="det";save();return render()}
+    if(d){try{await d.save({filename:"advanta-backup-"+today()+".json",data});$("#exm").textContent="Backup offered for download. Text shown above too.";return}catch(e){}}$("#exm").textContent="Tap “Copy backup text” and paste it into a note."};
+  $("#cp").onclick=async()=>{const t=$("#bk");if(!t.value)t.value=JSON.stringify(S,null,1);t.select();try{await navigator.clipboard.writeText(t.value);$("#exm").textContent="Copied ✓"}catch(e){$("#exm").textContent="Long-press and Copy."}};
+  const imp=x=>{try{const o=JSON.parse(x);if(!Array.isArray(o.p)||!Array.isArray(o.sales))throw 0;S=norm(o);save();$("#imm").textContent="Imported ✓ "+o.p.length+" prospects."}catch(e){$("#imm").textContent="That doesn’t look like an AdVanta backup."}};
+  $("#im").onclick=()=>imp($("#bk").value);$("#fl").onchange=e=>{const r=new FileReader();r.onload=()=>imp(r.result);r.readAsText(e.target.files[0])}}
+async function ai(p){const b=$("#aib"),m=$("#aim");if(!sample)return;b.disabled=true;b.textContent="Drafting…";const s=S.set,st=(S.req&&S.req.style)||"Professional and personalised",sv=(S.req&&S.req.service)||"Facebook & Instagram Ads";
+  const pr=`You write for ${s.biz}, a US agency offering ${sv}. Write a first outreach email, style: ${st}. Use ONLY these facts; never invent statistics, results or claims about their ads.\nBusiness: ${p.name}\nCategory: ${p.ind}\nLocation: ${p.city}, ${p.state}\nWebsite: ${p.web}\nContact: ${p.contact}\nNotes: ${p.notes}\nResearch: ${p.why||""}\nIdeas: ${p.opp}\nReturn ONLY JSON: {"subject":"honest, under 60 chars","body":"under 120 words, no signature, address or opt-out line"}`;
+  try{const r=await sample.json(pr);p.subj=r.subject||"";p.body=r.body||"";p.ok=false;p.chk=false;save();render()}catch(e){b.disabled=false;b.textContent="✨ Redraft with AI";m.innerHTML='<span class="er">AI redraft failed ('+esc(e&&e.code||"error")+'). Try again.</span>'}}
+function t2(e,x){const b=e.target.closest("button"),o=b.textContent;b.textContent=x;setTimeout(()=>b.textContent=o,1500)}
+document.addEventListener("click",e=>{const t=e.target.closest("button,[data-open]");if(!t)return;const d=t.dataset;
+  if(d.go){view=d.go;armed=null;render();return window.scrollTo(0,0)}
+  if(d.open){cur=d.open;view="det";render();return window.scrollTo(0,0)}
+  if(d.cat){const q=S.req||(S.req={cats:[]});const a=new Set(q.cats||[]);a.has(d.cat)?a.delete(d.cat):a.add(d.cat);q.cats=[...a];t.classList.toggle("on");if(!S.req.id){}return}
+  if(d.find){const w=$("#fw"),em=$("#fe").value.trim(),cats=(S.req&&S.req.cats)||[];
+    if(!/^\S+@\S+\.\S+$/.test(em)){w.hidden=false;w.textContent="Enter a valid business email.";return}
+    if(!cats.length){w.hidden=false;w.textContent="Pick at least one category.";return}
+    S.req={id:uid(),at:new Date().toISOString(),email:em,country:$("#fc").value,cats,service:$("#fv").value,n:+$("#fn").value,style:$("#fy").value,status:"waiting"};save();render();return window.scrollTo(0,document.body.scrollHeight/3)}
+  if(d.copym){navigator.clipboard.writeText("Run my AdVanta search").then(()=>t2(e,"Copied ✓")).catch(()=>{$("#cm").select();t2(e,"Select & copy")});return}
+  if(d.pull)return pull();
+  if(d.new){const p={id:uid(),name:"",ind:"Other",city:"",state:"",web:"",contact:"",email:"",stage:"New",notes:"",opp:"",fu:"",prop:"",subj:"",body:"",ok:false,chk:false,dnc:false,fee:"",since:""};S.p.push(p);cur=p.id;view="det";save();return render()}
   const p=P(cur);
   if(d.snz!==undefined&&p){p.fu=d.snz==="0"?"":addDays(+d.snz);save();return render()}
   if(d.ai&&p)return ai(p);
   if(d.app&&p){if(blockers(p).length)return;p.ok=true;p.okAt=new Date().toLocaleString();save();return appr(p)}
   if(d.unapp&&p){p.ok=false;save();return appr(p)}
-  if(d.copy&&p){const t="Subject: "+p.subj+"\n\n"+full(p);navigator.clipboard.writeText(t).then(()=>{t2(e,"Copied ✓")}).catch(()=>{t2(e,"Copy blocked")});return}
-  if(d.gmail&&p){if(!p.ok)return;const u="https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(p.email)+"&su="+encodeURIComponent(p.subj)+"&body="+encodeURIComponent(full(p));const w=window.open(u,"_blank");if(!w)t2(e,"Popup blocked. Use Copy email");return}
+  if(d.copy&&p){navigator.clipboard.writeText("Subject: "+p.subj+"\n\n"+full(p)).then(()=>t2(e,"Copied ✓")).catch(()=>t2(e,"Copy blocked"));return}
+  if(d.gmail&&p){if(!p.ok)return;const w=window.open("https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(p.email)+"&su="+encodeURIComponent(p.subj)+"&body="+encodeURIComponent(full(p)),"_blank");if(!w)t2(e,"Blocked. Use Copy");return}
   if(d.del&&p){if(armed===p.id){S.p=S.p.filter(x=>x!==p);armed=null;view="pros";save();return render()}armed=p.id;return render()}
-  if(d.ds){if(armed===d.ds){S.sales=S.sales.filter(s=>s.id!==d.ds);armed=null;save();return render()}armed=d.ds;return render()}
-});
-function t2(e,x){const b=e.target.closest("button"),o=b.textContent;b.textContent=x;setTimeout(()=>b.textContent=o,1500)}
-document.addEventListener("input",e=>{const t=e.target,p=P(cur);
-  if(t.dataset.s){S.set[t.dataset.s]=t.value;return save()}
-  if(!p)return;
-  if(t.dataset.f){const k=t.dataset.f;p[k]=t.type==="checkbox"?t.checked:t.value;
-    if(k==="stage"){$("#fee").hidden=p.stage!=="Won";if(p.stage==="Won"&&!p.since)p.since=today()}
-    if(k==="email"||k==="dnc"){p.ok=false;appr(p)}save()}
-  if(t.dataset.d){p[t.dataset.d]=t.value;if(p.ok){p.ok=false;appr(p)}save()}
-});
+  if(d.ds){if(armed===d.ds){S.sales=S.sales.filter(s=>s.id!==d.ds);armed=null;save();return render()}armed=d.ds;return render()}});
+document.addEventListener("input",e=>{const t=e.target,p=P(cur);if(t.dataset.s){S.set[t.dataset.s]=t.value;return save()}if(!p)return;
+  if(t.dataset.f){const k=t.dataset.f;p[k]=t.type==="checkbox"?t.checked:t.value;if(k==="stage"){$("#fee").hidden=p.stage!=="Won";if(p.stage==="Won"&&!p.since)p.since=today()}if(k==="email"||k==="dnc"){p.ok=false;appr(p)}save()}
+  if(t.dataset.d){p[t.dataset.d]=t.value;if(p.ok){p.ok=false;appr(p)}save()}});
 init();
 </script></body></html>
